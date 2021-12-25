@@ -17,7 +17,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-stream" % "2.6.18",
   "com.typesafe.akka" %% "akka-serialization-jackson" % "2.6.18",
   "org.slf4j" % "slf4j-api" % "1.7.25" % "compile",
-  "ch.qos.logback" % "logback-classic" % "1.2.3" % "runtime"
+  "ch.qos.logback" % "logback-classic" % "1.2.3" % "runtime",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
 )
 
 // Adds additional packages into Twirl

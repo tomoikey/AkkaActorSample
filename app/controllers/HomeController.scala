@@ -1,5 +1,7 @@
 package controllers
 
+import model.ClientObject
+
 import javax.inject._
 import play.api._
 import play.api.mvc._
@@ -18,5 +20,13 @@ class HomeController @Inject() (val controllerComponents: ControllerComponents) 
     */
   def index() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
+  }
+
+  def show(number: Long) = Action {
+    // Eitherはパターンマッチで以下のようにRightとLeftの場合で処理できる
+    ClientObject.sendNumberToRemote(number) match {
+      case Right(s) => Ok(views.html.show(s"Show => $number * 2 = $s")) // 成功時
+      case Left(e)  => Ok(views.html.show(s"Error!!! : $e")) // 失敗時
+    }
   }
 }
